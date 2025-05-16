@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Atreyapuram Sweets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Your Shopping Cart</h1>
+    <nav>
+      <a href="index.html">← Back to Products</a>
+      <a href="cart.html" id="cart-float">🛒 Cart</a>
+
+    </nav>
+  </header>
+
+  <main id="cart-items">
+    <!-- Cart items will be shown here -->
+  </main>
+
+  <section style="text-align:center; margin-top: 2rem;">
+    <h3>Total: ₹<span id="total-price">0</span></h3>
+    <button onclick="checkout()">Proceed to Checkout</button>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  
+</body>
+</html>
