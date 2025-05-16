@@ -1,30 +1,3 @@
-const products = [
-  {
-    id: 1,
-    name: "Putharekulu (10 pcs)",
-    price: 250,
-    image: "https://via.placeholder.com/300x180.png?text=Putharekulu"
-  },
-  {
-    id: 2,
-    name: "Mango Jelly (250g)",
-    price: 150,
-    image: "https://via.placeholder.com/300x180.png?text=Mango+Jelly"
-  },
-  {
-    id: 3,
-    name: "Dry Fruits Mix (500g)",
-    price: 350,
-    image: "https://via.placeholder.com/300x180.png?text=Dry+Fruits"
-  },
-  {
-    id: 4,
-    name: "Rice Paper Sheets",
-    price: 120,
-    image: "https://via.placeholder.com/300x180.png?text=Raw+Material"
-  }
-];
-
 let cart = [];
 
 function displayProducts() {
@@ -38,6 +11,24 @@ function displayProducts() {
     </div>
   `).join('');
 }
+function displayProducts() {
+  const productList = document.getElementById("product-list");
+  productList.innerHTML = ""; // Clear before loading
+
+  products.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "product-card";
+    div.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>₹${product.price}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+    `;
+    productList.appendChild(div);
+  });
+}
+
+displayProducts(); // Call it on page load
 
 function addToCart(productId) {
   const product = products.find(p => p.id === productId);
@@ -53,11 +44,32 @@ function viewCart() {
 displayProducts();
 // Existing products (no change here)
 const products = [
-  { id: 1, name: "Putharekulu (10 pcs)", price: 250, image: "https://via.placeholder.com/300x180.png?text=Putharekulu" },
-  { id: 2, name: "Mango Jelly (250g)", price: 150, image: "https://via.placeholder.com/300x180.png?text=Mango+Jelly" },
-  { id: 3, name: "Dry Fruits Mix (500g)", price: 350, image: "https://via.placeholder.com/300x180.png?text=Dry+Fruits" },
-  { id: 4, name: "Rice Paper Sheets", price: 120, image: "https://via.placeholder.com/300x180.png?text=Raw+Material" }
+  {
+    id: 1,
+    name: "Putharekulu (Sugar)",
+    price: 300,
+    image: "images/putharekulu.jpg",
+  },
+  {
+    id: 2,
+    name: "Dry Fruit Putharekulu",
+    price: 450,
+    image: "images/dryfruit-putharekulu.jpg",
+  },
+  {
+    id: 3,
+    name: "Mango Jelly",
+    price: 150,
+    image: "images/mango-jelly.jpg",
+  },
+  {
+    id: 4,
+    name: "Jaggery Blocks",
+    price: 100,
+    image: "images/jaggery.jpg",
+  }
 ];
+
 
 // Save cart in localStorage for persistence between pages
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
